@@ -4,6 +4,9 @@ import type { FieldProps as Props, FieldRenderProps } from "./types";
 import renderComponent from "./renderComponent";
 import useField from "./useField";
 
+/**
+ * 调用 useField
+ */
 const Field = React.forwardRef<any, Props>(function Field(
   {
     afterSubmit,

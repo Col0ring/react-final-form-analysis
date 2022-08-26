@@ -40,6 +40,7 @@ export const all: FormSubscription = formSubscriptionItems.reduce(
   {},
 );
 
+// 默认监听所有状态，需要把 subscription 的 values 置为 false
 function ReactFinalForm<FormValues: FormValuesShape>({
   debug,
   decorators = [],
@@ -92,7 +93,9 @@ function ReactFinalForm<FormValues: FormValuesShape>({
     // We have rendered, so all fields are now registered, so we can unpause validation
     form.isValidationPaused() && form.resumeValidation();
     const unsubscriptions: Unsubscribe[] = [
+      // 其实在这里就可以看出 react 其实也是要全量 render 的
       form.subscribe((s) => {
+        // 浅比较 object
         if (!shallowEqual(s, stateRef.current)) {
           setState(s);
         }

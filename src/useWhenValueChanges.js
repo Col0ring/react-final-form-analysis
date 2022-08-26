@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 
+// 监听值的改变，其实就是简单的 previous 值的记录
 export default function useWhenValueChanges(
   value: any,
   callback: () => void,

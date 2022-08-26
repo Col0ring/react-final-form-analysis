@@ -31,6 +31,7 @@ const defaultParse = (value: ?any, name: string) =>
 
 const defaultIsEqual = (a: any, b: any): boolean => a === b;
 
+// 默认监听所有状态
 function useField<FormValues: FormValuesShape>(
   name: string,
   config: UseFieldConfig = {},
@@ -51,6 +52,7 @@ function useField<FormValues: FormValuesShape>(
     validateFields,
     value: _value,
   } = config;
+  // 获取 form 操作
   const form: FormApi<FormValues> = useForm<FormValues>("useField");
 
   const configRef = useLatest(config);
@@ -92,6 +94,7 @@ function useField<FormValues: FormValuesShape>(
 
   const firstRender = React.useRef(true);
 
+  // 更新 field 字段值
   // synchronously register and unregister to query field state for our subscription on first render
   const [state, setState] = React.useState<FieldState>((): FieldState => {
     let initialState: FieldState = {};
