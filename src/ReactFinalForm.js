@@ -78,6 +78,7 @@ function ReactFinalForm<FormValues: FormValuesShape>({
   const [state, setState] = React.useState<FormState<FormValues>>(
     (): FormState<FormValues> => {
       let initialState: FormState<FormValues> = {};
+      // 同步更新，更新完直接 unsubscribe
       form.subscribe((state) => {
         initialState = state;
       }, subscription)();
